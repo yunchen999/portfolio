@@ -1,637 +1,1144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yun-Chen (Sunny) Lee | Business & Data Analytics Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --primary: #2563eb;
-            --primary-light: #dbeafe;
-            --accent: #0f172a;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yun-Chen (Sunny) Lee | Business Analytics Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-light: #dbeafe;
+      --accent: #0f172a;
+      --border: #e2e8f0;
+      --success-bg: #f0fdf4;
+      --success-border: #bbf7d0;
+      --success-text: #14532d;
+      --note-bg: #f8fafc;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-hover: 0 14px 24px -12px rgb(15 23 42 / 0.25);
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            display: flex;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* 側邊欄導覽 */
-        sidebar {
-            width: 280px;
-            background-color: var(--accent);
-            color: #ffffff;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 2.5rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            z-index: 100;
-        }
+    html { scroll-behavior: smooth; }
 
-        .profile-info h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.05em;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      display: flex;
+    }
 
-        .profile-info p {
-            color: #94a3b8;
-            font-size: 0.875rem;
-            margin-bottom: 2rem;
-        }
+    sidebar {
+      width: 72px;
+      background-color: var(--accent);
+      color: #ffffff;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 2.5rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 100;
+      overflow: hidden;
+      transition: width 0.3s ease;
+    }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
+    sidebar:hover { width: 280px; }
 
-        .nav-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            transition: all 0.2s;
-        }
+    .profile-info h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.05em;
+      opacity: 0;
+      white-space: nowrap;
+      transition: opacity 0.2s ease;
+    }
 
-        .nav-links a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            transform: translateX(4px);
-        }
+    .profile-info p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      white-space: nowrap;
+      transition: opacity 0.2s ease;
+    }
 
-        .sidebar-footer {
-            font-size: 0.75rem;
-            color: #64748b;
-            border-top: 1px solid #334155;
-            padding-top: 1rem;
-        }
+    sidebar:hover .profile-info h1,
+    sidebar:hover .profile-info p { opacity: 1; }
 
-        /* 主要內容區 */
-        main {
-            margin-left: 280px;
-            padding: 3rem 4rem;
-            max-width: 1100px;
-            width: calc(100% - 280px);
-        }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
 
-        section {
-            margin-bottom: 4rem;
-            scroll-margin-top: 3rem;
-        }
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
 
-        h2 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border);
-        }
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      transform: translateX(4px);
+    }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background-color: var(--primary);
-        }
+    .nav-links a i { min-width: 24px; text-align: center; }
 
-        /* 關於我 */
-        .about-box {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 1rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
+    .nav-links a span {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
 
-        .about-box p {
-            margin-bottom: 1.25rem;
-            color: #334155;
-            font-size: 1.05rem;
-        }
+    sidebar:hover .nav-links a span { opacity: 1; }
 
-        .interests {
-            margin-top: 1.5rem;
-        }
+    .sidebar-footer {
+      font-size: 0.75rem;
+      color: #64748b;
+      border-top: 1px solid #334155;
+      padding-top: 1rem;
+      opacity: 0;
+      white-space: nowrap;
+      transition: opacity 0.2s ease;
+    }
 
-        .interests h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-            color: var(--accent);
-        }
+    sidebar:hover .sidebar-footer { opacity: 1; }
 
-        .interests ul {
-            list-style-type: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 0.75rem;
-        }
+    main {
+      margin-left: 72px;
+      padding: 3rem 4rem;
+      max-width: none;
+      width: calc(100% - 72px);
+      transition: margin-left 0.3s ease, width 0.3s ease;
+    }
 
-        .interests li {
-            background: var(--bg-color);
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            font-size: 0.9rem;
-            border-left: 4px solid var(--primary);
-            font-weight: 500;
-        }
+    section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 3rem;
+    }
 
-        /* 技術技能 */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+      letter-spacing: -0.03em;
+    }
 
-        .skill-card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-        }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background-color: var(--primary);
+    }
 
-        .skill-card h3 {
-            font-size: 1rem;
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    .about-box {
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 35px;
+    }
 
-        .skill-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
+    .about-photo { flex: 0 0 240px; }
 
-        /* 專案卡片 */
-        .project-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
+    .about-photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      display: block;
+    }
 
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 1rem;
-            padding: 2.5rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+    .photo-caption { text-align: center; margin-top: 15px; }
 
-        .project-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-        }
+    .photo-caption h4 {
+      margin: 0;
+      color: #13294B;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
 
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.25rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+    .photo-caption p {
+      margin: 5px 0 0 0;
+      color: #64748b;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
 
-        .project-title {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
+    .about-text { flex: 1; }
 
-        .tag-container {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
+    .about-text p {
+      margin-bottom: 1.25rem;
+      color: #334155;
+      font-size: 1.05rem;
+    }
 
-        .tag {
-            background-color: var(--primary-light);
-            color: var(--primary);
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.25rem 0.75rem;
-            border-radius: 2rem;
-            text-transform: uppercase;
-        }
+    .interests { margin-top: 1.5rem; }
 
-        .starl-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
+    .interests h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
 
-        .starl-item {
-            font-size: 0.95rem;
-        }
+    .interests ul {
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.75rem;
+    }
 
-        .starl-label {
-            font-weight: 600;
-            color: var(--accent);
-            display: inline-block;
-            width: 90px;
-        }
+    .interests li {
+      background: var(--bg-color);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      border-left: 4px solid var(--primary);
+      font-weight: 600;
+    }
 
-        .starl-content {
-            color: #334155;
-        }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 1.5rem;
+    }
 
-        .action-list {
-            margin-left: 90px;
-            padding-left: 1.25rem;
-            margin-top: 0.25rem;
-            color: #334155;
-        }
+    .skill-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 0.85rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
 
-        .results-box {
-            background-color: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            padding: 1.25rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1.25rem;
-        }
+    .skill-card h3 {
+      font-size: 1rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-        .results-box h4 {
-            color: #166534;
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    .skill-card ul {
+      padding-left: 1.1rem;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
 
-        .results-box ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
+    .skill-card li { margin-bottom: 0.35rem; }
 
-        .results-box li {
-            font-size: 0.95rem;
-            color: #14532d;
-            margin-bottom: 0.35rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
 
-        .learning-box {
-            background-color: #f8fafc;
-            border-left: 4px solid #94a3b8;
-            padding: 0.75rem 1.25rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      padding: 2.25rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-        /* 聯絡資訊 */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
 
-        .contact-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 1rem;
-            border-radius: 0.75rem;
-            text-decoration: none;
-            color: var(--accent);
-            font-weight: 600;
-            box-shadow: var(--shadow);
-            transition: all 0.2s;
-        }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-        .contact-btn:hover {
-            background: var(--primary);
-            color: #ffffff;
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
+    .project-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--accent);
+      max-width: 720px;
+      letter-spacing: -0.025em;
+    }
 
-        /* 響應式排版 (RWD) */
-        @media (max-width: 992px) {
-            body {
-                flex-direction: column;
-            }
-            sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                padding: 2rem;
-            }
-            .nav-links {
-                flex-direction: row;
-                flex-wrap: wrap;
-                margin-top: 1rem;
-            }
-            main {
-                width: 100%;
-                margin-left: 0;
-                padding: 2rem;
-            }
-            .action-list {
-                margin-left: 0;
-                padding-left: 1.2rem;
-            }
-            .starl-label {
-                display: block;
-                margin-bottom: 0.25rem;
-            }
-        }
-    </style>
+    .project-subtitle {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+
+    .tag-container, .tools-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .project-section { margin-top: 1.15rem; }
+
+    .project-section h4 {
+      color: var(--accent);
+      font-size: 0.98rem;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .project-section p { color: #334155; font-size: 0.96rem; }
+
+    .project-section ul {
+      color: #334155;
+      padding-left: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .project-section li { margin-bottom: 0.38rem; }
+
+    .project-overview-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 42%) 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-top: 1.35rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .project-images {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: sticky;
+      top: 1rem;
+    }
+
+    .project-image-frame {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 0.85rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .project-image-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      transition: transform 0.4s ease;
+      cursor: zoom-in;
+    }
+
+    .project-image-frame:hover img { transform: scale(1.08); }
+
+    .image-caption {
+      padding: 0.65rem 0.8rem;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-top: 1px solid var(--border);
+      background: #f8fafc;
+    }
+
+    .project-sta { min-width: 0; }
+    .project-sta .project-section:first-child { margin-top: 0; }
+
+    @media (max-width: 1100px) {
+      .project-overview-grid { grid-template-columns: 1fr; }
+      .project-images {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .project-images { grid-template-columns: 1fr; }
+    }
+
+    .impact-box {
+      background-color: var(--success-bg);
+      border: 1px solid var(--success-border);
+      padding: 1.15rem 1.25rem;
+      border-radius: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .impact-box h4 {
+      color: #166534;
+      font-size: 0.98rem;
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .impact-box ul { list-style: none; padding-left: 0; }
+
+    .impact-box li {
+      color: var(--success-text);
+      margin-bottom: 0.45rem;
+      font-size: 0.95rem;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .metric {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 0.65rem;
+      padding: 0.8rem;
+      color: #334155;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .tool-tag {
+      background-color: #f0f4f8;
+      color: #13294B;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      border: 1px solid #d1e0ec;
+      transition: all 0.25s ease;
+    }
+
+    .tool-tag:hover {
+      background-color: #13294B;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .why-box {
+      background-color: var(--note-bg);
+      border-left: 4px solid var(--primary);
+      padding: 0.9rem 1.2rem;
+      border-radius: 0.45rem;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-top: 1.25rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      transition: all 0.2s;
+    }
+
+    .contact-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 992px) {
+      body { flex-direction: column; }
+      sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 2rem;
+      }
+      .nav-links { flex-direction: row; flex-wrap: wrap; margin-top: 1rem; }
+      main { width: 100%; margin-left: 0; padding: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      main { padding: 1.25rem; }
+      .about-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+      }
+      .about-photo { flex: 0 0 auto; width: 230px; }
+      .project-card { padding: 1.5rem; }
+      .project-title { font-size: 1.15rem; }
+    }
+  </style>
 </head>
+
 <body>
+  <sidebar>
+    <div class="profile-info">
+      <h1>Sunny Lee</h1>
+      <p>Business Analyst | Data Analyst</p>
+      <ul class="nav-links">
+        <li><a href="#about"><i class="fa-solid fa-user"></i><span>About Me</span></a></li>
+        <li><a href="#skills"><i class="fa-solid fa-code"></i><span>Skills</span></a></li>
+        <li><a href="#projects"><i class="fa-solid fa-folder-open"></i><span>Projects</span></a></li>
+        <li><a href="#contact"><i class="fa-solid fa-envelope"></i><span>Contact</span></a></li>
+      </ul>
+    </div>
+    <div class="sidebar-footer">
+      <p>&copy; 2026 Yun-Chen Lee.<br>All Rights Reserved.</p>
+    </div>
+  </sidebar>
 
-    <sidebar>
-        <div class="profile-info">
-            <h1>Sunny Lee</h1>
-            <p>Business & Data Analytics Graduate</p>
-            <ul class="nav-links">
-                <li><a href="#about"><i class="fa-solid fa-user"></i> About Me</a></li>
-                <li><a href="#skills"><i class="fa-solid fa-code"></i> Skills</a></li>
-                <li><a href="#projects"><i class="fa-solid fa-folder-open"></i> Projects</a></li>
-                <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+  <main>
+    <section id="about">
+      <h2><i class="fa-solid fa-user-graduate"></i> About Me</h2>
+      <div class="about-box">
+        <div class="about-photo">
+          <img src="port/aboutme.JPG" alt="Sunny Lee" />
+          <div class="photo-caption">
+            <h4>Business Analyst | Data Analyst</h4>
+            <p>Marketing Analytics • Business Intelligence • Cloud Analytics</p>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>Hi, I'm Sunny Lee, a Business Analytics graduate from the <strong>University of Illinois Urbana-Champaign</strong> with experience in consulting, marketing analytics, healthcare analytics, and cloud-based business intelligence.</p>
+          <p>I enjoy transforming data into actionable business insights. Through consulting projects, cloud analytics solutions, and consumer behavior research, I have helped stakeholders identify growth opportunities, improve operational visibility, and support data-driven decision-making.</p>
+          <p>My interests include Business Analytics, Marketing Analytics, Business Intelligence, and Cloud Analytics.</p>
+          <div class="interests">
+            <h3>🎯 Areas of Interest</h3>
+            <ul>
+              <li>📈 Marketing Analytics</li>
+              <li>📊 Business Intelligence</li>
+              <li>☁️ Cloud Analytics</li>
             </ul>
+          </div>
         </div>
-        <div class="sidebar-footer">
-            <p>&copy; 2026 Yun-Chen Lee.<br>All Rights Reserved.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2><i class="fa-solid fa-gears"></i> Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3><i class="fa-solid fa-chart-line"></i> Marketing & Business Analytics</h3>
+          <ul>
+            <li>Customer Behavior Analysis</li>
+            <li>Performance Measurement</li>
+            <li>Attribution Modeling</li>
+            <li>KPI Analysis</li>
+            <li>A/B Testing & Hypothesis Testing</li>
+          </ul>
         </div>
-    </sidebar>
+        <div class="skill-card">
+          <h3><i class="fa-solid fa-chart-simple"></i> Business Intelligence</h3>
+          <ul>
+            <li>Dashboard Development</li>
+            <li>Executive Reporting</li>
+            <li>Data Visualization</li>
+            <li>Root Cause Analysis</li>
+            <li>Business Performance Monitoring</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3><i class="fa-solid fa-cloud"></i> Cloud Analytics & Data Solutions</h3>
+          <ul>
+            <li>AWS Analytics Pipeline Development</li>
+            <li>ETL Workflow Design</li>
+            <li>Automated Reporting</li>
+            <li>Operational Monitoring</li>
+            <li>Data Quality Validation</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3><i class="fa-solid fa-screwdriver-wrench"></i> Technical Tools</h3>
+          <ul>
+            <li>SQL</li>
+            <li>Python</li>
+            <li>SAS</li>
+            <li>Tableau</li>
+            <li>AWS Cloud: S3, Lambda, Glue, Athena</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <main>
-        
-        <section id="about">
-            <h2><i class="fa-solid fa-user-graduate"></i> About Me</h2>
-            <div class="about-box">
-                <p>Hi, I'm Sunny Lee! I am a Business Analytics graduate from the <strong>University of Illinois Urbana-Champaign</strong> with experience spanning analytics consulting, healthcare data analysis, cloud-based operational analytics, and business intelligence.</p>
-                <p>My work focuses on transforming complex datasets into actionable business insights through statistical analysis, machine learning, cloud technologies, and data visualization. Across consulting projects, healthcare research, and AWS-based analytics platforms, I have built solutions that improve decision-making, automate reporting processes, identify operational risks, and support business growth.</p>
-                
-                <div class="interests">
-                    <h3>🎯 Areas of Interest</h3>
-                    <ul>
-                        <li>Business & Product Analytics</li>
-                        <li>Marketing Analytics & ROI Optimization</li>
-                        <li>Data-Driven Strategy & Causal Inference</li>
-                    </ul>
-                </div>
+    <section id="projects">
+      <h2><i class="fa-solid fa-diagram-project"></i> Featured Projects</h2>
+      <div class="project-list">
+
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-title">1. Growth Marketing Analytics Consulting — JumpFly</div>
+              <div class="project-subtitle">Client-Facing Consulting Project</div>
             </div>
-        </section>
-
-        <section id="skills">
-            <h2><i class="fa-solid fa-gears"></i> Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3><i class="fa-solid fa-chart-line"></i> Analytics & Stats</h3>
-                    <p>Statistical Modeling, Machine Learning, Causal Inference, Hypothesis Testing, Financial Statement Analysis</p>
-                </div>
-                <div class="skill-card">
-                    <h3><i class="fa-solid fa-terminal"></i> Programming</h3>
-                    <p>Python (Pandas, NumPy, Scikit-Learn), SQL, SAS, R</p>
-                </div>
-                <div class="skill-card">
-                    <h3><i class="fa-cloud aws-icon"></i> Cloud & DE</h3>
-                    <p>AWS (S3, Lambda, Glue, Athena, Step Functions), ETL Pipelines, Automated Alerting</p>
-                </div>
-                <div class="skill-card">
-                    <h3><i class="fa-solid fa-chart-pie"></i> BI & Visualization</h3>
-                    <p>Tableau, Power BI, Excel, Executive Dashboards</p>
-                </div>
+            <div class="tag-container">
+              <span class="tag">Marketing Analytics</span>
+              <span class="tag">Growth Analytics</span>
+              <span class="tag">Business Intelligence</span>
             </div>
-        </section>
-
-        <section id="projects">
-            <h2><i class="fa-solid fa-diagram-project"></i> Featured Projects</h2>
-            <div class="project-list">
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">1. Real-Time Fleet Risk Monitoring & Analytics Platform </div>
-                        <div class="tag-container">
-                            <span class="tag">Cloud Analytics</span>
-                            <span class="tag">AWS</span>
-                        </div>
-                    </div>
-                    <div class="starl-grid">
-                        <div class="starl-item"><span class="starl-label">Situation:</span><span class="starl-content">A logistics company lacked real-time visibility into delivery operations and relied heavily on manual reporting processes to identify failed deliveries, compliance violations, and operational exceptions.</span></div>
-                        <div class="starl-item"><span class="starl-label">Task:</span><span class="starl-content">Design a scalable analytics platform capable of monitoring operational performance, detecting anomalies, and automating reporting processes while maintaining audit-ready records.</span></div>
-                        <div class="starl-item">
-                            <span class="starl-label">Action:</span>
-                            <span class="starl-content">Designed a cloud-based analytics pipeline using AWS S3, Lambda, Glue, Athena, and Step Functions to process over 45,000 simulated monthly delivery events. Developed anomaly detection workflows and built SQL dashboards.</span>
-                        </div>
-                    </div>
-                    <div class="results-box">
-                        <h4><i class="fa-solid fa-square-poll-vertical"></i> Key Results</h4>
-                        <ul>
-                            <li>📉 Reduced manual monitoring effort by approximately 50%.</li>
-                            <li>💰 Saved ~$4,000 per month in manual labor via automated KPI reporting workflows.</li>
-                            <li>🚀 Created scalable reporting infrastructure supporting future operational growth.</li>
-                        </ul>
-                    </div>
-                    <div class="learning-box">
-                        <strong>Learning:</strong> Strengthened cloud analytics architecture skills and learned how to balance technical implementation with business requirements like compliance and cost control.
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">2. Growth Marketing Analytics Consulting — JumpFly (UIUC-Client Meeting)</div>
-                        <div class="tag-container">
-                            <span class="tag">Marketing Analytics</span>
-                            <span class="tag">Python</span>
-                        </div>
-                    </div>
-                    <div class="starl-grid">
-                        <div class="starl-item"><span class="starl-label">Situation:</span><span class="starl-content">A digital marketing agency needed better visibility into the effectiveness of multiple acquisition channels and clearer guidance for resource allocation decisions.</span></div>
-                        <div class="starl-item"><span class="starl-label">Task:</span><span class="starl-content">Identify the channels driving business growth and develop analytical frameworks that support data-driven marketing investment decisions.</span></div>
-                        <div class="starl-item">
-                            <span class="starl-label">Action:</span>
-                            <span class="starl-content">Analyzed 70+ high-intent SEO and acquisition opportunities. Built log-log regression models in Python to evaluate traffic sources (SEO, Direct, Paid Search, ChatGPT, Reddit) and presented biweekly stakeholder consulting sessions.</span>
-                        </div>
-                    </div>
-                    <div class="results-box">
-                        <h4><i class="fa-solid fa-square-poll-vertical"></i> Key Results</h4>
-                        <ul>
-                            <li>📈 Identified SEO and Direct traffic as the strongest drivers of revenue growth.</li>
-                            <li>🎯 Quantified ROI differences across acquisition channels to prioritize investments.</li>
-                            <li>📊 Improved stakeholder visibility into channel performance through executive dashboards.</li>
-                        </ul>
-                    </div>
-                    <div class="learning-box">
-                        <strong>Learning:</strong> Learned how to translate complex statistical findings into actionable business recommendations and communicate effectively with non-technical stakeholders.
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">3. Amazon Prime Day Consumer Analytics</div>
-                        <div class="tag-container">
-                            <span class="tag">Causal Inference</span>
-                            <span class="tag">Consumer Strategy</span>
-                        </div>
-                    </div>
-                    <div class="starl-grid">
-                        <div class="starl-item"><span class="starl-label">Situation:</span><span class="starl-content">Retail organizations struggle to determine whether promotional events generate truly incremental sales or simply shift existing demand.</span></div>
-                        <div class="starl-item"><span class="starl-label">Task:</span><span class="starl-content">Analyze consumer purchasing behavior during Prime Day and identify key drivers influencing purchase decisions.</span></div>
-                        <div class="starl-item">
-                            <span class="starl-label">Action:</span>
-                            <span class="starl-content">Applied causal inference and regression analysis techniques across 30+ product categories. Built dashboards to visualize purchasing trends and conducted hypothesis testing to validate findings.</span>
-                        </div>
-                    </div>
-                    <div class="results-box">
-                        <h4><i class="fa-solid fa-square-poll-vertical"></i> Key Results</h4>
-                        <ul>
-                            <li>🔍 Identified categories most responsive to promotional events vs. impulse purchases.</li>
-                            <li>💡 Generated data-driven recommendations for future targeted promotional strategies.</li>
-                            <li>📋 Delivered executive-level dashboards summarizing multi-category analytical insights.</li>
-                        </ul>
-                    </div>
-                    <div class="learning-box">
-                        <strong>Learning:</strong> Deepened my understanding of causal inference and how analytics can distinguish correlation from true business impact.
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">4. Business Credit Risk Evaluation</div>
-                        <div class="tag-container">
-                            <span class="tag">Financial Analytics</span>
-                            <span class="tag">Risk Management</span>
-                        </div>
-                    </div>
-                    <div class="starl-grid">
-                        <div class="starl-item"><span class="starl-label">Situation:</span><span class="starl-content">Investors and lenders need objective methods to assess a company's long-term financial sustainability and repayment capacity.</span></div>
-                        <div class="starl-item"><span class="starl-label">Task:</span><span class="starl-content">Compare the credit risk profiles of Starbucks and Peloton using financial statement analysis.</span></div>
-                        <div class="starl-item">
-                            <span class="starl-label">Action:</span>
-                            <span class="starl-content">Collected 5 years of financial data. Developed a risk scoring framework using 9 financial indicators evaluating Profitability, Cash Flow, Leverage, and Coverage Ratios.</span>
-                        </div>
-                    </div>
-                    <div class="results-box">
-                        <h4><i class="fa-solid fa-square-poll-vertical"></i> Key Results</h4>
-                        <ul>
-                            <li>✅ Classified Starbucks as a lower-risk profile.</li>
-                            <li>⚠️ Identified significant liquidity and leverage risks for Peloton.</li>
-                            <li>📋 Produced a structured, repeatable framework for corporate business credit evaluation.</li>
-                        </ul>
-                    </div>
-                    <div class="learning-box">
-                        <strong>Learning:</strong> Learned how financial metrics interact and how macro business context is critical when interpreting quantitative risk indicators.
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">5. Healthcare Analytics — MIMIC-III & TriNetX (Intern of Taipei Medical University)</div>
-                        <div class="tag-container">
-                            <span class="tag">Healthcare</span>
-                            <span class="tag">SAS</span>
-                        </div>
-                    </div>
-                    <div class="starl-grid">
-                        <div class="starl-item"><span class="starl-label">Situation:</span><span class="starl-content">Healthcare datasets often contain large volumes of complex clinical records that require extensive validation before analysis.</span></div>
-                        <div class="starl-item"><span class="starl-label">Task:</span><span class="starl-content">Prepare clinical data for healthcare research and support evidence-based decision-making.</span></div>
-                        <div class="starl-item">
-                            <span class="starl-label">Action:</span>
-                            <span class="starl-content">Processed and validated approximately 59,000 hospital admission records from the MIMIC-III database using SAS. Reviewed real-world evidence reports from 42 healthcare organizations through TriNetX.</span>
-                        </div>
-                    </div>
-                    <div class="results-box">
-                        <h4><i class="fa-solid fa-square-poll-vertical"></i> Key Results</h4>
-                        <ul>
-                            <li>🧹 Improved analytical readiness of datasets and reduced inconsistencies for downstream analysis.</li>
-                            <li>📊 Enhanced efficiency in reviewing large-scale healthcare evidence.</li>
-                            <li>🤝 Supported clinical researchers with rigorous, interpretable analytical summaries.</li>
-                        </ul>
-                    </div>
-                    <div class="learning-box">
-                        <strong>Learning:</strong> Gained hands-on experience navigating the strict quality and validation challenges inherent in complex healthcare data environments.
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">6. Smart Healthcare Policy & Infrastructure Analysis (Intern of Joint Commission of Taiwan)</div>
-                        <div class="tag-container">
-                            <span class="tag">Domain Research</span>
-                            <span class="tag">Strategy</span>
-                        </div>
-                    </div>
-                    <div class="starl-grid">
-                        <div class="starl-item"><span class="starl-label">Situation:</span><span class="starl-content">Healthcare stakeholders preparing for international hospital benchmarking visits required structured insights into healthcare systems in South Korea and Taiwan.</span></div>
-                        <div class="starl-item"><span class="starl-label">Task:</span><span class="starl-content">Identify healthcare technology, infrastructure, and policy differences to support stakeholder planning and benchmarking initiatives.</span></div>
-                        <div class="starl-item">
-                            <span class="starl-label">Action:</span>
-                            <span class="starl-content">Conducted comparative analysis across 10+ healthcare policy and technology domains by synthesizing government reports, industry publications, and healthcare research sources.</span>
-                        </div>
-                    </div>
-                    <div class="results-box">
-                        <h4><i class="fa-solid fa-square-poll-vertical"></i> Key Results</h4>
-                        <ul>
-                            <li>🗺️ Successfully supported international healthcare delegation planning and scheduling activities.</li>
-                            <li>💡 Enabled more informed stakeholder discussions regarding healthcare digital transformation.</li>
-                            <li>📝 Consolidated large volumes of qualitative policy research into actionable insights.</li>
-                        </ul>
-                    </div>
-                    <div class="learning-box">
-                        <strong>Learning:</strong> Developed the ability to distill massive, complex policy research into concise recommendations tailored to executive audiences.
-                    </div>
-                </div>
-
+          </div>
+          <div class="project-overview-grid">
+            <div class="project-images">
+              <figure class="project-image-frame">
+                <img src="port/jumpfly-process.png" alt="Regression analysis process" />
+                <figcaption class="image-caption">Regression analysis process</figcaption>
+              </figure>
+              <figure class="project-image-frame">
+                <img src="port/jumpfly-results.png" alt="Regression results & insights" />
+                <figcaption class="image-caption">Regression results & insights</figcaption>
+              </figure>
             </div>
-        </section>
-
-        <section id="contact">
-            <h2><i class="fa-solid fa-address-book"></i> Let's Connect!</h2>
-            <div class="contact-grid">
-                <a href="mailto:ssunnyylii0829@gmail.com" class="contact-btn"><i class="fa-solid fa-envelope"></i> Email Me</a>
-                <a href="https://www.linkedin.com/in/yunchenlee/" target="_blank" class="contact-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                <a href="https://medium.com/@ssunnyylii0829" target="_blank" class="contact-btn"><i class="fa-brands fa-medium"></i> Medium</a>
+            <div class="project-sta">
+              <div class="project-section">
+                <h4><i class="fa-solid fa-circle-question"></i> Situation</h4>
+                <p>A digital marketing agency needed greater visibility into the effectiveness of its acquisition channels and clearer guidance on where to prioritize marketing investments. Stakeholders lacked a data-driven framework to evaluate channel performance across SEO, Direct, Paid Search, Reddit, and emerging AI-driven traffic sources.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-bullseye"></i> Task</h4>
+                <p>Develop an analytical framework to identify the channels driving business growth, measure relative marketing effectiveness, and provide actionable recommendations to support strategic resource allocation.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-list-check"></i> Action</h4>
+                <ul>
+                  <li>Analyzed 70+ high-intent SEO and customer acquisition opportunities using Python and SQL.</li>
+                  <li>Built log-log regression models to quantify the relationship between acquisition channels and revenue performance.</li>
+                  <li>Developed channel attribution and ROI evaluation frameworks across SEO, Direct, Paid Search, Reddit, and ChatGPT traffic sources.</li>
+                  <li>Designed executive dashboards to monitor acquisition performance and visualize key business metrics.</li>
+                  <li>Presented analytical findings and strategic recommendations during biweekly stakeholder consulting sessions.</li>
+                </ul>
+              </div>
+              <div class="impact-box">
+                <h4><i class="fa-solid fa-square-poll-vertical"></i> Business Impact</h4>
+                <ul>
+                  <li>📈 Identified SEO and Direct traffic as the strongest drivers of revenue growth, helping prioritize future marketing investments.</li>
+                  <li>🎯 Quantified performance differences across acquisition channels, enabling more informed budget allocation decisions.</li>
+                  <li>📊 Improved stakeholder visibility into channel effectiveness through executive-level dashboards and performance reporting.</li>
+                  <li>🤖 Demonstrated that emerging AI-driven traffic sources showed measurable business impact despite lower traffic volume, highlighting future growth opportunities.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-gauge-high"></i> Key Metrics</h4>
+                <div class="metrics-grid">
+                  <div class="metric">70+ acquisition opportunities analyzed</div>
+                  <div class="metric">5 acquisition channels evaluated</div>
+                  <div class="metric">Biweekly client-facing presentations</div>
+                  <div class="metric">Regression modeling & dashboard development</div>
+                </div>
+              </div>
             </div>
-        </section>
+          </div>
+          <div class="project-section">
+            <h4><i class="fa-solid fa-toolbox"></i> Technologies</h4>
+            <div class="tools-tags">
+              <span class="tool-tag">Python</span>
+              <span class="tool-tag">SQL</span>
+              <span class="tool-tag">Pandas</span>
+              <span class="tool-tag">Statistical Modeling</span>
+              <span class="tool-tag">Regression Analysis</span>
+              <span class="tool-tag">Data Visualization</span>
+              <span class="tool-tag">Executive Reporting</span>
+            </div>
+          </div>
+          <div class="why-box">
+            <strong>Why This Project Matters:</strong> This project demonstrates how analytics can move beyond reporting and support business decision-making. By combining statistical modeling, channel attribution, and stakeholder communication, the project transformed raw marketing data into actionable growth strategies.
+          </div>
+        </article>
 
-    </main>
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-title">2. Real-Time Fleet Intelligence & Operational Analytics Platform</div>
+              <div class="project-subtitle">Cloud Analytics | Operations Analytics | AWS</div>
+            </div>
+            <div class="tag-container">
+              <span class="tag">Cloud Analytics</span>
+              <span class="tag">Business Intelligence</span>
+              <span class="tag">Operations Analytics</span>
+              <span class="tag">AWS</span>
+            </div>
+          </div>
+          <div class="project-overview-grid">
+            <div class="project-images">
+              <figure class="project-image-frame">
+                <img src="port/aws-architecture.png" alt="AWS architecture / data pipeline" />
+                <figcaption class="image-caption">AWS architecture / data pipeline</figcaption>
+              </figure>
+              <figure class="project-image-frame">
+                <img src="port/aws-dashboard.png" alt="Operational KPI dashboard" />
+                <figcaption class="image-caption">Operational KPI dashboard</figcaption>
+              </figure>
+            </div>
+            <div class="project-sta">
+              <div class="project-section">
+                <h4><i class="fa-solid fa-circle-question"></i> Situation</h4>
+                <p>A logistics organization lacked real-time visibility into delivery operations and relied heavily on manual reporting processes to identify failed deliveries, compliance issues, and operational exceptions. As fleet operations scaled, stakeholders needed faster access to performance metrics and automated monitoring capabilities.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-bullseye"></i> Task</h4>
+                <p>Design a scalable analytics platform capable of monitoring operational performance, detecting anomalies, automating KPI reporting, and supporting audit-ready operational records.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-list-check"></i> Action</h4>
+                <ul>
+                  <li>Designed and implemented a cloud-based analytics architecture using AWS S3, Lambda, Glue, Athena, and Step Functions.</li>
+                  <li>Built automated data ingestion and transformation workflows processing approximately 45,000 simulated delivery events per month.</li>
+                  <li>Developed anomaly detection logic to identify failed deliveries, compliance violations, and prolonged vehicle idle events.</li>
+                  <li>Implemented automated KPI reporting and operational alerting workflows to reduce reliance on manual monitoring.</li>
+                  <li>Structured raw and processed datasets to support scalable analytics and dashboard reporting.</li>
+                </ul>
+              </div>
+              <div class="impact-box">
+                <h4><i class="fa-solid fa-square-poll-vertical"></i> Business Impact</h4>
+                <ul>
+                  <li>📊 Reduced manual monitoring effort by approximately 50% through automated reporting and alert workflows.</li>
+                  <li>💰 Generated an estimated $4,000 monthly labor savings by eliminating manual KPI compilation processes.</li>
+                  <li>⚡ Enabled near real-time visibility into operational performance and delivery exceptions.</li>
+                  <li>📈 Established a scalable analytics infrastructure capable of supporting future fleet growth while maintaining audit-ready records.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-gauge-high"></i> Key Metrics</h4>
+                <div class="metrics-grid">
+                  <div class="metric">45,000+ monthly delivery events processed</div>
+                  <div class="metric">200–500 vehicle scaling scenario modeled</div>
+                  <div class="metric">90–180 day compliance retention strategy</div>
+                  <div class="metric">Estimated $4,000/month manual reporting cost reduction</div>
+                  <div class="metric">50% reduction in monitoring effort</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-section">
+            <h4><i class="fa-solid fa-toolbox"></i> Technologies</h4>
+            <div class="tools-tags">
+              <span class="tool-tag">AWS S3</span>
+              <span class="tool-tag">Lambda</span>
+              <span class="tool-tag">Athena</span>
+              <span class="tool-tag">Glue</span>
+              <span class="tool-tag">Step Functions</span>
+              <span class="tool-tag">SQL</span>
+              <span class="tool-tag">ETL Pipelines</span>
+              <span class="tool-tag">Data Modeling</span>
+              <span class="tool-tag">Automated Alerting</span>
+            </div>
+          </div>
+          <div class="why-box">
+            <strong>Why This Project Matters:</strong> This project demonstrates how cloud analytics can transform operational data into actionable business intelligence. By combining automation, anomaly detection, and reporting workflows, the platform improves operational visibility while reducing manual effort and supporting scalable business growth.
+          </div>
+        </article>
 
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-title">3. Amazon Prime Day Consumer Analytics & Promotional Impact Evaluation</div>
+              <div class="project-subtitle">Marketing Analytics | Consumer Analytics | Causal Inference</div>
+            </div>
+            <div class="tag-container">
+              <span class="tag">Marketing Analytics</span>
+              <span class="tag">Consumer Analytics</span>
+              <span class="tag">Causal Inference</span>
+            </div>
+          </div>
+          <div class="project-overview-grid">
+            <div class="project-images">
+              <figure class="project-image-frame">
+                <img src="port/amazon-analysis.png" alt="Promotional impact analysis" />
+                <figcaption class="image-caption">Promotional impact analysis</figcaption>
+              </figure>
+              <figure class="project-image-frame">
+                <img src="port/amazon-dashboard.png" alt="Consumer analytics dashboard" />
+                <figcaption class="image-caption">Consumer analytics dashboard</figcaption>
+              </figure>
+            </div>
+            <div class="project-sta">
+              <div class="project-section">
+                <h4><i class="fa-solid fa-circle-question"></i> Situation</h4>
+                <p>Retail organizations often struggle to determine whether major promotional events generate truly incremental revenue or simply shift existing consumer demand. Understanding promotional effectiveness is critical for optimizing future marketing investments and campaign strategies.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-bullseye"></i> Task</h4>
+                <p>Evaluate consumer purchasing behavior during Amazon Prime Day, identify key drivers influencing purchase decisions, and distinguish incremental promotional impact from demand-shifting effects across product categories.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-list-check"></i> Action</h4>
+                <ul>
+                  <li>Analyzed purchasing behavior across 30+ product categories using regression analysis and causal inference techniques.</li>
+                  <li>Applied hypothesis testing to evaluate differences in customer response to promotional events.</li>
+                  <li>Investigated category-level purchasing patterns to identify promotion-sensitive and impulse-driven product segments.</li>
+                  <li>Developed dashboards and visualizations summarizing consumer behavior trends and promotional performance.</li>
+                  <li>Synthesized analytical findings into business recommendations for future promotional planning.</li>
+                </ul>
+              </div>
+              <div class="impact-box">
+                <h4><i class="fa-solid fa-square-poll-vertical"></i> Business Impact</h4>
+                <ul>
+                  <li>📈 Identified product categories most responsive to promotional events, enabling more targeted marketing strategies.</li>
+                  <li>🛒 Distinguished incremental sales effects from demand-shifting behavior, improving the accuracy of campaign performance evaluation.</li>
+                  <li>🎯 Uncovered behavioral differences between planned purchases and impulse purchases across multiple product categories.</li>
+                  <li>📊 Delivered executive-style dashboards that translated complex analytical findings into actionable business insights.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-gauge-high"></i> Key Metrics</h4>
+                <div class="metrics-grid">
+                  <div class="metric">30+ product categories analyzed</div>
+                  <div class="metric">Multiple regression models evaluated</div>
+                  <div class="metric">Causal inference framework applied</div>
+                  <div class="metric">Hypothesis testing across promotional segments</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-section">
+            <h4><i class="fa-solid fa-toolbox"></i> Technologies</h4>
+            <div class="tools-tags">
+              <span class="tool-tag">Python</span>
+              <span class="tool-tag">SQL</span>
+              <span class="tool-tag">Regression Analysis</span>
+              <span class="tool-tag">Causal Inference</span>
+              <span class="tool-tag">Hypothesis Testing</span>
+              <span class="tool-tag">Data Visualization</span>
+              <span class="tool-tag">Dashboard Development</span>
+            </div>
+          </div>
+          <div class="why-box">
+            <strong>Why This Project Matters:</strong> This project demonstrates how advanced analytics can help organizations move beyond descriptive reporting and evaluate true business impact. By combining causal inference, statistical testing, and consumer behavior analysis, the project provides a framework for more effective promotional decision-making.
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-title">4. Healthcare Analytics — MIMIC-III & TriNetX</div>
+              <div class="project-subtitle">Internship Project | Taipei Medical University</div>
+            </div>
+            <div class="tag-container">
+              <span class="tag">Healthcare Analytics</span>
+              <span class="tag">Clinical Data Analysis</span>
+              <span class="tag">SAS</span>
+            </div>
+          </div>
+          <div class="project-overview-grid">
+            <div class="project-images">
+              <figure class="project-image-frame">
+                <a href="port/trinetx.pdf" target="_blank" class="contact-btn"><i class="fa-solid fa-file-lines"></i> TriNetX / research</a> 
+              </figure>
+            </div>
+            <div class="project-sta">
+              <div class="project-section">
+                <h4><i class="fa-solid fa-circle-question"></i> Situation</h4>
+                <p>Healthcare research often relies on large-scale clinical datasets that require extensive validation, preparation, and quality review before meaningful analysis can be performed. Inaccurate or inconsistent data can significantly impact research outcomes and decision-making.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-bullseye"></i> Task</h4>
+                <p>Prepare and validate clinical datasets to support healthcare research initiatives and improve the usability of data for downstream analytical and reporting activities.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-list-check"></i> Action</h4>
+                <ul>
+                  <li>Processed and validated approximately 59,000 hospital admission records from the MIMIC-III clinical database using SAS.</li>
+                  <li>Extracted and reviewed diagnosis-related variables to improve analytical readiness and data consistency.</li>
+                  <li>Evaluated real-world evidence reports across 42 healthcare organizations within the TriNetX network.</li>
+                  <li>Synthesized analytical findings into structured summaries and presentation materials for healthcare research stakeholders.</li>
+                  <li>Supported data quality review processes by identifying data characteristics relevant to downstream analysis.</li>
+                </ul>
+              </div>
+              <div class="impact-box">
+                <h4><i class="fa-solid fa-square-poll-vertical"></i> Business Impact</h4>
+                <ul>
+                  <li>🏥 Improved data readiness for healthcare research by validating and organizing large-scale clinical datasets.</li>
+                  <li>📊 Increased efficiency in reviewing healthcare evidence across 42 organizations through structured analytical summaries.</li>
+                  <li>🔍 Enhanced data quality and consistency, reducing potential issues during downstream research activities.</li>
+                  <li>📑 Supported evidence-based discussions by translating complex healthcare findings into stakeholder-ready reports.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-gauge-high"></i> Key Metrics</h4>
+                <div class="metrics-grid">
+                  <div class="metric">59,000+ hospital admission records processed</div>
+                  <div class="metric">42 healthcare organizations reviewed</div>
+                  <div class="metric">Multiple clinical datasets validated</div>
+                  <div class="metric">SAS-based data processing and quality review</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-section">
+            <h4><i class="fa-solid fa-toolbox"></i> Technologies</h4>
+            <div class="tools-tags">
+              <span class="tool-tag">SAS</span>
+              <span class="tool-tag">Healthcare Analytics</span>
+              <span class="tool-tag">Data Validation</span>
+              <span class="tool-tag">Clinical Data Management</span>
+              <span class="tool-tag">Research Reporting</span>
+            </div>
+          </div>
+          <div class="why-box">
+            <strong>Why This Project Matters:</strong> This project demonstrates the importance of data quality in healthcare analytics. By validating large-scale clinical datasets and synthesizing evidence from multiple healthcare organizations, the work supported more reliable research outcomes and evidence-based decision-making.
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-title">5. Business Credit Risk Evaluation: Starbucks vs. Peloton</div>
+            </div>
+            <div class="tag-container">
+              <span class="tag">Financial Analytics</span>
+              <span class="tag">Credit Risk Analysis</span>
+              <span class="tag">Business Intelligence</span>
+            </div>
+          </div>
+          <div class="project-overview-grid">
+            <div class="project-images">
+              <figure class="project-image-frame">
+                <img src="port/credit-scorecard.png" alt="Credit risk scorecard" />
+                <figcaption class="image-caption">Credit risk scorecard</figcaption>
+              </figure>
+              <figure class="project-image-frame">
+                <a href="port/credit_risk copy.xlsx" download class="contact-btn"><i class="fa-solid fa-file-lines"></i> Full credit risk document</a> 
+              </figure>
+            </div>
+            <div class="project-sta">
+              <div class="project-section">
+                <h4><i class="fa-solid fa-circle-question"></i> Situation</h4>
+                <p>Lenders and investors must evaluate whether companies can sustain operations, meet debt obligations, and manage financial risk under changing market conditions. Traditional profitability metrics alone often fail to provide a complete picture of a company's creditworthiness.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-bullseye"></i> Task</h4>
+                <p>Assess and compare the credit risk profiles of Starbucks and Peloton by analyzing financial performance, leverage, liquidity, cash flow generation, and debt repayment capacity over a five-year period.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-list-check"></i> Action</h4>
+                <ul>
+                  <li>Collected and analyzed five years of financial statement data from SEC 10-K filings.</li>
+                  <li>Evaluated nine key credit risk indicators across profitability, cash flow, leverage, and coverage categories.</li>
+                  <li>Developed a weighted credit scoring framework to assess overall debt repayment capacity.</li>
+                  <li>Compared financial trends and risk exposures between Starbucks and Peloton.</li>
+                  <li>Synthesized findings into an executive-style credit assessment and recommendation report.</li>
+                </ul>
+              </div>
+              <div class="impact-box">
+                <h4><i class="fa-solid fa-square-poll-vertical"></i> Business Impact</h4>
+                <ul>
+                  <li>📈 Identified Starbucks as a financially stable borrower with strong cash generation and debt servicing capability.</li>
+                  <li>⚠️ Highlighted Peloton's elevated credit risk through weak profitability, limited interest coverage, and higher financial leverage.</li>
+                  <li>💰 Demonstrated the importance of free cash flow and coverage metrics beyond traditional earnings measures.</li>
+                  <li>📊 Created a structured evaluation framework that can be applied to future corporate credit assessments.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-gauge-high"></i> Key Metrics</h4>
+                <div class="metrics-grid">
+                  <div class="metric">5 years of SEC 10-K financial data analyzed</div>
+                  <div class="metric">9 credit risk indicators evaluated</div>
+                  <div class="metric">2 public companies compared</div>
+                  <div class="metric">Weighted credit scoring model developed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-section">
+            <h4><i class="fa-solid fa-toolbox"></i> Technologies</h4>
+            <div class="tools-tags">
+              <span class="tool-tag">Excel</span>
+              <span class="tool-tag">Financial Statement Analysis</span>
+              <span class="tool-tag">Ratio Analysis</span>
+              <span class="tool-tag">Credit Risk Modeling</span>
+              <span class="tool-tag">Business Reporting</span>
+            </div>
+          </div>
+          <div class="why-box">
+            <strong>Why This Project Matters:</strong> This project demonstrates how financial analytics can support lending, investment, and risk management decisions. By combining multi-year financial analysis with a structured scoring methodology, the project provides a more comprehensive view of corporate creditworthiness than profitability metrics alone.
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-title">6. Smart Healthcare Policy & Infrastructure Analysis</div>
+              <div class="project-subtitle">Research Internship | Joint Commission of Taiwan</div>
+            </div>
+            <div class="tag-container">
+              <span class="tag">Domain Research</span>
+              <span class="tag">Policy Analysis</span>
+              <span class="tag">Strategy</span>
+            </div>
+          </div>
+          <div class="project-overview-grid">
+            <div class="project-images">
+                <figure class="project-image-frame">
+                    <a href="port/korean.pdf" target="_blank" class="contact-btn"><i class="fa-solid fa-file-lines"></i> Full research</a> 
+                  </figure>
+            </div>
+            <div class="project-sta">
+              <div class="project-section">
+                <h4><i class="fa-solid fa-circle-question"></i> Situation</h4>
+                <p>Healthcare stakeholders preparing for international benchmarking initiatives required a structured comparison of smart healthcare development across South Korea and Taiwan.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-bullseye"></i> Task</h4>
+                <p>Conduct comparative research on healthcare technology adoption, digital infrastructure, policy implementation, and healthcare innovation initiatives.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-list-check"></i> Action</h4>
+                <ul>
+                  <li>Conducted comparative analysis across 10+ healthcare technology, infrastructure, and policy domains.</li>
+                  <li>Reviewed government publications, healthcare reports, and industry research from both countries.</li>
+                  <li>Organized findings into stakeholder-ready reports and presentation materials.</li>
+                  <li>Identified key differences in digital health adoption, interoperability, and healthcare innovation strategies.</li>
+                </ul>
+              </div>
+              <div class="impact-box">
+                <h4><i class="fa-solid fa-square-poll-vertical"></i> Business Impact</h4>
+                <ul>
+                  <li>🌏 Supported healthcare benchmarking efforts by providing structured comparisons of smart healthcare initiatives.</li>
+                  <li>📑 Consolidated complex policy and industry information into actionable stakeholder insights.</li>
+                  <li>🏥 Helped stakeholders better understand international healthcare best practices and digital transformation trends.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-gauge-high"></i> Key Metrics</h4>
+                <div class="metrics-grid">
+                  <div class="metric">10+ healthcare domains analyzed</div>
+                  <div class="metric">Multiple government and industry sources reviewed</div>
+                  <div class="metric">Stakeholder presentation materials delivered</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-section">
+            <h4><i class="fa-solid fa-toolbox"></i> Technologies</h4>
+            <div class="tools-tags">
+              <span class="tool-tag">Research Analysis</span>
+              <span class="tool-tag">Policy Analysis</span>
+              <span class="tool-tag">Strategic Reporting</span>
+              <span class="tool-tag">Stakeholder Communication</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2><i class="fa-solid fa-address-book"></i> Let's Connect!</h2>
+      <div class="contact-grid">
+        <a href="mailto:ssunnyylii0829@gmail.com" class="contact-btn"><i class="fa-solid fa-envelope"></i> Email Me</a>
+        <a href="https://www.linkedin.com/in/yunchenlee/" target="_blank" class="contact-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://medium.com/@ssunnyylii0829" target="_blank" class="contact-btn"><i class="fa-brands fa-medium"></i> Medium</a>
+        <a href="port/yunchenlee_resume.pdf" target="_blank" class="contact-btn"><i class="fa-solid fa-file-lines"></i> Resume</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;">
+    <img id="lightbox-img" src="" alt="" style="max-width:92vw;max-height:92vh;border-radius:10px;box-shadow:0 8px 48px rgba(0,0,0,0.6);object-fit:contain;" />
+    <button id="lightbox-close" style="position:fixed;top:1.25rem;right:1.5rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;">&#x2715;</button>
+  </div>
+
+  <script>
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.project-image-frame img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // Nav scroll
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
