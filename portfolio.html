@@ -503,6 +503,28 @@
       transform: translateY(-2px);
     }
 
+    /* Stats table style for YouTube project */
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 0.5rem;
+    }
+    .stats-table th {
+      background: #f1f5f9;
+      color: var(--accent);
+      font-weight: 700;
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .stats-table td {
+      padding: 0.45rem 0.75rem;
+      border: 1px solid var(--border);
+      color: #334155;
+    }
+    .stats-table tr:nth-child(even) td { background: #f8fafc; }
+
     @media (max-width: 992px) {
       body { flex-direction: column; }
       sidebar {
@@ -624,7 +646,7 @@
       <h2><i class="fa-solid fa-diagram-project"></i> Featured Projects</h2>
       <div class="project-list">
 
-        <!-- Project 1 -->
+        <!-- Project 1 — JumpFly -->
         <article class="project-card">
           <div class="project-header">
             <div>
@@ -704,11 +726,117 @@
           </div>
         </article>
 
-        <!-- Project 2 -->
+        <!-- Project 2 — YouTube (NEW) -->
         <article class="project-card">
           <div class="project-header">
             <div>
-              <div class="project-title">2. Real-Time Fleet Intelligence & Operational Analytics Platform</div>
+              <div class="project-title">2. Does Upload Frequency Drive YouTube Creator Success?</div>
+              <div class="project-subtitle">Marketing Analytics | Statistical Hypothesis Testing | UIUC MSBA · 2026</div>
+            </div>
+            <div class="tag-container">
+              <span class="tag">Marketing Analytics</span>
+              <span class="tag">Statistical Testing</span>
+              <span class="tag">Data Visualization</span>
+            </div>
+          </div>
+          <div class="project-overview-grid">
+            <div class="project-images">
+              <!-- Placeholder frames — swap src for your actual screenshots -->
+              <figure class="project-image-frame">
+                <img src="port/youtube-scatter.png" alt="Video count vs. subscriber count scatter plot" />
+                <figcaption class="image-caption">Log-scale scatter: Video Count vs. Subscriber Count</figcaption>
+              </figure>
+              <figure class="project-image-frame">
+                <img src="port/youtube-dashboard.png" alt="Tableau creator performance dashboard" />
+                <figcaption class="image-caption">Tableau dashboard — category & creator performance</figcaption>
+              </figure>
+              <figure class="project-image-frame">
+                <a href="port/youtube-presentation.pdf" target="_blank" class="contact-btn"><i class="fa-solid fa-file-powerpoint"></i> Full Presentation (PDF)</a>
+              </figure>
+            </div>
+            <div class="project-sta">
+              <div class="project-section">
+                <h4><i class="fa-solid fa-circle-question"></i> Situation</h4>
+                <p>A widely held assumption in the YouTube creator community is that posting more videos leads to faster channel growth. This project systematically tests that hypothesis using real data from 75 top creators across three content categories.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-bullseye"></i> Task</h4>
+                <p>Determine whether upload frequency (video count) is a statistically significant predictor of creator success (subscriber count), and investigate whether content efficiency varies meaningfully across categories.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-list-check"></i> Action</h4>
+                <ul>
+                  <li>Collected channel data via YouTube Data API v3 for 75 top creators (25 per category: Entertainment, Education, Science &amp; Technology).</li>
+                  <li>Engineered derived metrics: subscribers per video (content efficiency) and views per video.</li>
+                  <li>Built an OLS regression model to test whether video count predicts subscriber count.</li>
+                  <li>Constructed a correlation matrix to examine pairwise relationships across all numeric variables.</li>
+                  <li>Applied the Kruskal-Wallis test to evaluate whether subscriber efficiency differs significantly across categories.</li>
+                  <li>Developed three Tableau dashboards: category overview, top-creator performance, and scatter/distribution visualizations.</li>
+                </ul>
+              </div>
+
+              <!-- Statistical results inline table -->
+              <div class="project-section">
+                <h4><i class="fa-solid fa-flask"></i> Statistical Results</h4>
+                <table class="stats-table">
+                  <thead>
+                    <tr><th>Analysis</th><th>Key Metric</th><th>Result</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>OLS Regression (R²)</td><td>Variance explained</td><td>2.5% — extremely weak</td></tr>
+                    <tr><td>OLS p-value</td><td>Statistical significance</td><td>0.175 — fail to reject H₀</td></tr>
+                    <tr><td>Correlation: subs ↔ videos</td><td>Linear relationship</td><td>−0.037 (near zero)</td></tr>
+                    <tr><td>Correlation: subs ↔ views</td><td>Linear relationship</td><td>+0.93 (very strong)</td></tr>
+                    <tr><td>Kruskal-Wallis p-value</td><td>Category efficiency gap</td><td>5.72 × 10⁻⁷ (highly significant)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="impact-box">
+                <h4><i class="fa-solid fa-square-poll-vertical"></i> Key Findings</h4>
+                <ul>
+                  <li>📉 Upload frequency explains only 2.5% of subscriber growth — the null hypothesis is not rejected.</li>
+                  <li>🎬 Content engagement (view count) is the dominant growth driver, with r = 0.93 vs. subscribers.</li>
+                  <li>🏆 Entertainment creators generate 52,416 subscribers per video — 12.6× more efficient than Science &amp; Technology (4,150 subs/video).</li>
+                  <li>⭐ Quality outliers like Mark Rober (78M subs, 258 videos, 303K subs/video) confirm that strategic, high-quality content outperforms volume-driven approaches.</li>
+                </ul>
+              </div>
+
+              <div class="project-section">
+                <h4><i class="fa-solid fa-gauge-high"></i> Key Metrics</h4>
+                <div class="metrics-grid">
+                  <div class="metric">75 top creators analyzed</div>
+                  <div class="metric">3 content categories compared</div>
+                  <div class="metric">OLS regression + Kruskal-Wallis testing</div>
+                  <div class="metric">12.6× efficiency gap identified</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-section">
+            <h4><i class="fa-solid fa-toolbox"></i> Technologies</h4>
+            <div class="tools-tags">
+              <span class="tool-tag">Python</span>
+              <span class="tool-tag">Pandas</span>
+              <span class="tool-tag">SciPy</span>
+              <span class="tool-tag">Statsmodels</span>
+              <span class="tool-tag">Matplotlib / Seaborn</span>
+              <span class="tool-tag">YouTube Data API v3</span>
+              <span class="tool-tag">Tableau</span>
+              <span class="tool-tag">OLS Regression</span>
+              <span class="tool-tag">Hypothesis Testing</span>
+            </div>
+          </div>
+          <div class="why-box">
+            <strong>Why This Project Matters:</strong> This project challenges a common creator misconception with rigorous statistical evidence. By combining API data collection, regression modeling, non-parametric testing, and interactive dashboards, it demonstrates how data analytics can reframe strategic decisions — in this case, shifting focus from upload volume to content quality and audience alignment.
+          </div>
+        </article>
+
+        <!-- Project 3 — Fleet (was 2) -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-title">3. Real-Time Fleet Intelligence & Operational Analytics Platform</div>
               <div class="project-subtitle">Cloud Analytics | Operations Analytics | AWS</div>
             </div>
             <div class="tag-container">
@@ -788,11 +916,11 @@
           </div>
         </article>
 
-        <!-- Project 3 -->
+        <!-- Project 4 — Amazon Prime Day (was 3) -->
         <article class="project-card">
           <div class="project-header">
             <div>
-              <div class="project-title">3. Amazon Prime Day Consumer Analytics & Promotional Impact Evaluation</div>
+              <div class="project-title">4. Amazon Prime Day Consumer Analytics & Promotional Impact Evaluation</div>
               <div class="project-subtitle">Marketing Analytics | Consumer Analytics | Causal Inference</div>
             </div>
             <div class="tag-container">
@@ -868,11 +996,11 @@
           </div>
         </article>
 
-        <!-- Project 4 -->
+        <!-- Project 5 — Healthcare MIMIC (was 4) -->
         <article class="project-card">
           <div class="project-header">
             <div>
-              <div class="project-title">4. Healthcare Analytics — MIMIC-III & TriNetX</div>
+              <div class="project-title">5. Healthcare Analytics — MIMIC-III & TriNetX</div>
               <div class="project-subtitle">Internship Project | Taipei Medical University</div>
             </div>
             <div class="tag-container">
@@ -941,11 +1069,11 @@
           </div>
         </article>
 
-        <!-- Project 5 -->
+        <!-- Project 6 — Credit Risk (was 5) -->
         <article class="project-card">
           <div class="project-header">
             <div>
-              <div class="project-title">5. Business Credit Risk Evaluation: Starbucks vs. Peloton</div>
+              <div class="project-title">6. Business Credit Risk Evaluation: Starbucks vs. Peloton</div>
             </div>
             <div class="tag-container">
               <span class="tag">Financial Analytics</span>
@@ -1017,11 +1145,11 @@
           </div>
         </article>
 
-        <!-- Project 6 -->
+        <!-- Project 7 — Smart Healthcare (was 6) -->
         <article class="project-card">
           <div class="project-header">
             <div>
-              <div class="project-title">6. Smart Healthcare Policy & Infrastructure Analysis</div>
+              <div class="project-title">7. Smart Healthcare Policy & Infrastructure Analysis</div>
               <div class="project-subtitle">Research Internship | Joint Commission of Taiwan</div>
             </div>
             <div class="tag-container">
