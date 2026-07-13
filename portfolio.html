@@ -6,7 +6,6 @@
   <title>Yun-Chen (Sunny) Lee | Business Analytics Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
     :root {
       --bg-color: #f8fafc;
@@ -24,11 +23,8 @@
       --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
       --shadow-hover: 0 14px 24px -12px rgb(15 23 42 / 0.25);
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-color);
@@ -36,7 +32,6 @@
       line-height: 1.6;
       display: flex;
     }
-
     sidebar {
       width: 72px;
       background-color: var(--accent);
@@ -53,9 +48,7 @@
       overflow: hidden;
       transition: width 0.3s ease;
     }
-
     sidebar:hover { width: 280px; }
-
     .profile-info h1 {
       font-size: 1.6rem;
       font-weight: 800;
@@ -65,7 +58,6 @@
       white-space: nowrap;
       transition: opacity 0.2s ease;
     }
-
     .profile-info p {
       color: #94a3b8;
       font-size: 0.9rem;
@@ -74,17 +66,14 @@
       white-space: nowrap;
       transition: opacity 0.2s ease;
     }
-
     sidebar:hover .profile-info h1,
     sidebar:hover .profile-info p { opacity: 1; }
-
     .nav-links {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
     }
-
     .nav-links a {
       color: #cbd5e1;
       text-decoration: none;
@@ -99,22 +88,17 @@
       transition: all 0.2s;
       white-space: nowrap;
     }
-
     .nav-links a:hover {
       background-color: rgba(255, 255, 255, 0.1);
       color: #ffffff;
       transform: translateX(4px);
     }
-
     .nav-links a i { min-width: 24px; text-align: center; }
-
     .nav-links a span {
       opacity: 0;
       transition: opacity 0.2s ease;
     }
-
     sidebar:hover .nav-links a span { opacity: 1; }
-
     .sidebar-footer {
       font-size: 0.75rem;
       color: #64748b;
@@ -124,9 +108,7 @@
       white-space: nowrap;
       transition: opacity 0.2s ease;
     }
-
     sidebar:hover .sidebar-footer { opacity: 1; }
-
     main {
       margin-left: 72px;
       padding: 3rem 4rem;
@@ -134,12 +116,10 @@
       width: calc(100% - 72px);
       transition: margin-left 0.3s ease, width 0.3s ease;
     }
-
     section {
       margin-bottom: 4rem;
       scroll-margin-top: 3rem;
     }
-
     h2 {
       font-size: 1.75rem;
       font-weight: 800;
@@ -150,7 +130,6 @@
       border-bottom: 2px solid var(--border);
       letter-spacing: -0.03em;
     }
-
     h2::after {
       content: '';
       position: absolute;
@@ -160,7 +139,6 @@
       height: 2px;
       background-color: var(--primary);
     }
-
     .about-box {
       background: var(--card-bg);
       padding: 2.5rem;
@@ -171,9 +149,7 @@
       align-items: flex-start;
       gap: 35px;
     }
-
     .about-photo { flex: 0 0 240px; }
-
     .about-photo img {
       width: 100%;
       height: auto;
@@ -181,46 +157,37 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       display: block;
     }
-
     .photo-caption { text-align: center; margin-top: 15px; }
-
     .photo-caption h4 {
       margin: 0;
       color: #13294B;
       font-size: 1.05rem;
       line-height: 1.35;
     }
-
     .photo-caption p {
       margin: 5px 0 0 0;
       color: #64748b;
       font-size: 0.85rem;
       line-height: 1.4;
     }
-
     .about-text { flex: 1; }
-
     .about-text p {
       margin-bottom: 1.25rem;
       color: #334155;
       font-size: 1.05rem;
     }
-
     .interests { margin-top: 1.5rem; }
-
     .interests h3 {
       font-size: 1.1rem;
       margin-bottom: 0.75rem;
       color: var(--accent);
     }
-
     .interests ul {
       list-style-type: none;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 0.75rem;
     }
-
     .interests li {
       background: var(--bg-color);
       padding: 0.75rem 1rem;
@@ -229,13 +196,11 @@
       border-left: 4px solid var(--primary);
       font-weight: 600;
     }
-
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
       gap: 1.5rem;
     }
-
     .skill-card {
       background: var(--card-bg);
       padding: 1.5rem;
@@ -243,7 +208,6 @@
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
     }
-
     .skill-card h3 {
       font-size: 1rem;
       color: var(--primary);
@@ -252,21 +216,45 @@
       align-items: center;
       gap: 0.5rem;
     }
-
     .skill-card ul {
       padding-left: 1.1rem;
       color: var(--text-muted);
       font-size: 0.92rem;
     }
-
     .skill-card li { margin-bottom: 0.35rem; }
-
+    .filter-bar {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.75rem;
+    }
+    .filter-btn {
+      background: var(--card-bg);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+    .project-card.is-hidden { display: none; }
     .project-list {
       display: flex;
       flex-direction: column;
       gap: 2rem;
     }
-
     .project-card {
       background: var(--card-bg);
       border-radius: 1rem;
@@ -275,12 +263,10 @@
       border: 1px solid var(--border);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-
     .project-card:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-hover);
     }
-
     .project-header {
       display: flex;
       justify-content: space-between;
@@ -289,7 +275,6 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-
     .project-title {
       font-size: 1.35rem;
       font-weight: 800;
@@ -297,20 +282,17 @@
       max-width: 720px;
       letter-spacing: -0.025em;
     }
-
     .project-subtitle {
       color: var(--text-muted);
       font-size: 0.92rem;
       margin-top: 0.25rem;
       font-weight: 500;
     }
-
     .tag-container, .tools-tags {
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
     }
-
     .tag {
       background-color: var(--primary-light);
       color: var(--primary);
@@ -322,9 +304,7 @@
       letter-spacing: 0.02em;
       white-space: nowrap;
     }
-
     .project-section { margin-top: 1.15rem; }
-
     .project-section h4 {
       color: var(--accent);
       font-size: 0.98rem;
@@ -333,17 +313,13 @@
       align-items: center;
       gap: 0.45rem;
     }
-
     .project-section p { color: #334155; font-size: 0.96rem; }
-
     .project-section ul {
       color: #334155;
       padding-left: 1.2rem;
       font-size: 0.95rem;
     }
-
     .project-section li { margin-bottom: 0.38rem; }
-
     .project-overview-grid {
       display: grid;
       grid-template-columns: minmax(260px, 42%) 1fr;
@@ -352,7 +328,6 @@
       margin-top: 1.35rem;
       margin-bottom: 1.35rem;
     }
-
     .project-images {
       display: flex;
       flex-direction: column;
@@ -360,7 +335,6 @@
       position: sticky;
       top: 1rem;
     }
-
     .project-image-frame {
       background: #ffffff;
       border: 1px solid var(--border);
@@ -368,7 +342,6 @@
       overflow: hidden;
       box-shadow: var(--shadow);
     }
-
     .project-image-frame img {
       width: 100%;
       height: auto;
@@ -377,9 +350,7 @@
       transition: transform 0.4s ease;
       cursor: zoom-in;
     }
-
     .project-image-frame:hover img { transform: scale(1.08); }
-
     .image-caption {
       padding: 0.65rem 0.8rem;
       color: var(--text-muted);
@@ -388,10 +359,8 @@
       border-top: 1px solid var(--border);
       background: #f8fafc;
     }
-
     .project-sta { min-width: 0; }
     .project-sta .project-section:first-child { margin-top: 0; }
-
     @media (max-width: 1100px) {
       .project-overview-grid { grid-template-columns: 1fr; }
       .project-images {
@@ -400,11 +369,9 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
-
     @media (max-width: 768px) {
       .project-images { grid-template-columns: 1fr; }
     }
-
     .impact-box {
       background-color: var(--success-bg);
       border: 1px solid var(--success-border);
@@ -412,7 +379,6 @@
       border-radius: 0.75rem;
       margin-top: 1.25rem;
     }
-
     .impact-box h4 {
       color: #166534;
       font-size: 0.98rem;
@@ -421,22 +387,18 @@
       align-items: center;
       gap: 0.5rem;
     }
-
     .impact-box ul { list-style: none; padding-left: 0; }
-
     .impact-box li {
       color: var(--success-text);
       margin-bottom: 0.45rem;
       font-size: 0.95rem;
     }
-
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 0.75rem;
       margin-top: 0.75rem;
     }
-
     .metric {
       background: #ffffff;
       border: 1px solid var(--border);
@@ -446,7 +408,6 @@
       font-size: 0.9rem;
       font-weight: 600;
     }
-
     .tool-tag {
       background-color: #f0f4f8;
       color: #13294B;
@@ -457,13 +418,11 @@
       border: 1px solid #d1e0ec;
       transition: all 0.25s ease;
     }
-
     .tool-tag:hover {
       background-color: #13294B;
       color: #ffffff;
       transform: translateY(-2px);
     }
-
     .why-box {
       background-color: var(--note-bg);
       border-left: 4px solid var(--primary);
@@ -473,13 +432,11 @@
       font-size: 0.92rem;
       margin-top: 1.25rem;
     }
-
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
     }
-
     .contact-btn {
       display: flex;
       align-items: center;
@@ -495,14 +452,12 @@
       box-shadow: var(--shadow);
       transition: all 0.2s;
     }
-
     .contact-btn:hover {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
       transform: translateY(-2px);
     }
-
     /* Stats table style for YouTube project */
     .stats-table {
       width: 100%;
@@ -524,7 +479,6 @@
       color: #334155;
     }
     .stats-table tr:nth-child(even) td { background: #f8fafc; }
-
     @media (max-width: 992px) {
       body { flex-direction: column; }
       sidebar {
@@ -536,7 +490,6 @@
       .nav-links { flex-direction: row; flex-wrap: wrap; margin-top: 1rem; }
       main { width: 100%; margin-left: 0; padding: 2rem; }
     }
-
     @media (max-width: 768px) {
       main { padding: 1.25rem; }
       .about-box {
@@ -551,7 +504,6 @@
     }
   </style>
 </head>
-
 <body>
   <sidebar>
     <div class="profile-info">
@@ -568,7 +520,6 @@
       <p>&copy; 2026 Yun-Chen Lee.<br>All Rights Reserved.</p>
     </div>
   </sidebar>
-
   <main>
     <section id="about">
       <h2><i class="fa-solid fa-user-graduate"></i> About Me</h2>
@@ -595,7 +546,6 @@
         </div>
       </div>
     </section>
-
     <section id="skills">
       <h2><i class="fa-solid fa-gears"></i> Technical Skills</h2>
       <div class="skills-grid">
@@ -641,13 +591,18 @@
         </div>
       </div>
     </section>
-
     <section id="projects">
       <h2><i class="fa-solid fa-diagram-project"></i> Featured Projects</h2>
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="marketing">Marketing Analytics</button>
+        <button class="filter-btn" data-filter="finance">Finance &amp; Risk Analytics</button>
+        <button class="filter-btn" data-filter="healthcare">Healthcare Analytics</button>
+        <button class="filter-btn" data-filter="cloud">Cloud &amp; Business Intelligence</button>
+      </div>
       <div class="project-list">
-
         <!-- Project 1 — JumpFly -->
-        <article class="project-card">
+        <article class="project-card" data-category="marketing">
           <div class="project-header">
             <div>
               <div class="project-title">1. Growth Marketing Analytics Consulting — JumpFly</div>
@@ -725,9 +680,8 @@
             <strong>Why This Project Matters:</strong> This project demonstrates how analytics can move beyond reporting and support business decision-making. By combining statistical modeling, channel attribution, and stakeholder communication, the project transformed raw marketing data into actionable growth strategies.
           </div>
         </article>
-
-        <!-- Project 2 — YouTube (NEW) -->
-        <article class="project-card">
+        <!-- Project 2 — YouTube -->
+        <article class="project-card" data-category="marketing">
           <div class="project-header">
             <div>
               <div class="project-title">2. Does Upload Frequency Drive YouTube Creator Success?</div>
@@ -741,7 +695,6 @@
           </div>
           <div class="project-overview-grid">
             <div class="project-images">
-              <!-- Placeholder frames — swap src for your actual screenshots -->
               <figure class="project-image-frame">
                 <img src="port/video.png" alt="Video count vs. subscriber count scatter plot" />
                 <figcaption class="image-caption">Log-scale scatter: Video Count vs. Subscriber Count</figcaption>
@@ -778,8 +731,6 @@
                   <li>Developed three Tableau dashboards: category overview, top-creator performance, and scatter/distribution visualizations.</li>
                 </ul>
               </div>
-
-              <!-- Statistical results inline table -->
               <div class="project-section">
                 <h4><i class="fa-solid fa-flask"></i> Statistical Results</h4>
                 <table class="stats-table">
@@ -795,7 +746,6 @@
                   </tbody>
                 </table>
               </div>
-
               <div class="impact-box">
                 <h4><i class="fa-solid fa-square-poll-vertical"></i> Key Findings</h4>
                 <ul>
@@ -805,7 +755,6 @@
                   <li>⭐ Quality outliers like Mark Rober (78M subs, 258 videos, 303K subs/video) confirm that strategic, high-quality content outperforms volume-driven approaches.</li>
                 </ul>
               </div>
-
               <div class="project-section">
                 <h4><i class="fa-solid fa-gauge-high"></i> Key Metrics</h4>
                 <div class="metrics-grid">
@@ -835,9 +784,8 @@
             <strong>Why This Project Matters:</strong> This project challenges a common creator misconception with rigorous statistical evidence. By combining API data collection, regression modeling, non-parametric testing, and interactive dashboards, it demonstrates how data analytics can reframe strategic decisions — in this case, shifting focus from upload volume to content quality and audience alignment.
           </div>
         </article>
-
-        <!-- Project 3 — Fleet (was 2) -->
-        <article class="project-card">
+        <!-- Project 3 — Fleet -->
+        <article class="project-card" data-category="cloud">
           <div class="project-header">
             <div>
               <div class="project-title">3. Real-Time Fleet Intelligence & Operational Analytics Platform</div>
@@ -919,9 +867,8 @@
             <strong>Why This Project Matters:</strong> This project demonstrates how cloud analytics can transform operational data into actionable business intelligence. By combining automation, anomaly detection, and reporting workflows, the platform improves operational visibility while reducing manual effort and supporting scalable business growth.
           </div>
         </article>
-
-        <!-- Project 4 — Amazon Prime Day (was 3) -->
-        <article class="project-card">
+        <!-- Project 4 — Amazon Prime Day -->
+        <article class="project-card" data-category="marketing">
           <div class="project-header">
             <div>
               <div class="project-title">4. Amazon Prime Day Consumer Analytics & Promotional Impact Evaluation</div>
@@ -999,9 +946,8 @@
             <strong>Why This Project Matters:</strong> This project demonstrates how advanced analytics can help organizations move beyond descriptive reporting and evaluate true business impact. By combining causal inference, statistical testing, and consumer behavior analysis, the project provides a framework for more effective promotional decision-making.
           </div>
         </article>
-
-        <!-- Project 5 — Healthcare MIMIC (was 4) -->
-        <article class="project-card">
+        <!-- Project 5 — Healthcare MIMIC -->
+        <article class="project-card" data-category="healthcare">
           <div class="project-header">
             <div>
               <div class="project-title">5. Healthcare Analytics — MIMIC-III & TriNetX</div>
@@ -1016,7 +962,7 @@
           <div class="project-overview-grid">
             <div class="project-images">
               <figure class="project-image-frame">
-                <a href="port/trinetx.pdf" target="_blank" class="contact-btn"><i class="fa-solid fa-file-lines"></i> TriNetX / research</a> 
+                <a href="port/trinetx.pdf" target="_blank" class="contact-btn"><i class="fa-solid fa-file-lines"></i> TriNetX / research</a>
               </figure>
             </div>
             <div class="project-sta">
@@ -1072,9 +1018,8 @@
             <strong>Why This Project Matters:</strong> This project demonstrates the importance of data quality in healthcare analytics. By validating large-scale clinical datasets and synthesizing evidence from multiple healthcare organizations, the work supported more reliable research outcomes and evidence-based decision-making.
           </div>
         </article>
-
-        <!-- Project 6 — Credit Risk (was 5) -->
-        <article class="project-card">
+        <!-- Project 6 — Credit Risk -->
+        <article class="project-card" data-category="finance">
           <div class="project-header">
             <div>
               <div class="project-title">6. Business Credit Risk Evaluation: Starbucks vs. Peloton</div>
@@ -1092,7 +1037,7 @@
                 <figcaption class="image-caption">Credit risk scorecard</figcaption>
               </figure>
               <figure class="project-image-frame">
-                <a href="port/credit_risk copy.xlsx" download class="contact-btn"><i class="fa-solid fa-file-lines"></i> Full credit risk document</a> 
+                <a href="port/credit_risk copy.xlsx" download class="contact-btn"><i class="fa-solid fa-file-lines"></i> Full credit risk document</a>
               </figure>
             </div>
             <div class="project-sta">
@@ -1148,9 +1093,8 @@
             <strong>Why This Project Matters:</strong> This project demonstrates how financial analytics can support lending, investment, and risk management decisions. By combining multi-year financial analysis with a structured scoring methodology, the project provides a more comprehensive view of corporate creditworthiness than profitability metrics alone.
           </div>
         </article>
-
-        <!-- Project 7 — Smart Healthcare (was 6) -->
-        <article class="project-card">
+        <!-- Project 7 — Smart Healthcare -->
+        <article class="project-card" data-category="healthcare">
           <div class="project-header">
             <div>
               <div class="project-title">7. Smart Healthcare Policy & Infrastructure Analysis</div>
@@ -1165,7 +1109,7 @@
           <div class="project-overview-grid">
             <div class="project-images">
                 <figure class="project-image-frame">
-                    <a href="port/korean.pdf" target="_blank" class="contact-btn"><i class="fa-solid fa-file-lines"></i> Full research</a> 
+                    <a href="port/korean.pdf" target="_blank" class="contact-btn"><i class="fa-solid fa-file-lines"></i> Full research</a>
                   </figure>
             </div>
             <div class="project-sta">
@@ -1214,10 +1158,82 @@
             </div>
           </div>
         </article>
-
+        <!-- Project 8 — Insurance Pricing GLM (NEW) -->
+        <article class="project-card" data-category="finance">
+          <div class="project-header">
+            <div>
+              <div class="project-title">8. Insurance Premium Pricing — Actuarial Frequency-Severity GLM</div>
+              <div class="project-subtitle">Financial & Risk Analytics | Actuarial Modeling | Python</div>
+            </div>
+            <div class="tag-container">
+              <span class="tag">Financial Analytics</span>
+              <span class="tag">Risk Analytics</span>
+              <span class="tag">Actuarial Science</span>
+            </div>
+          </div>
+          <div class="project-overview-grid">
+            <div class="project-images">
+              <figure class="project-image-frame">
+                <img src="port/glm-lift-chart.png" alt="Lift chart: predicted vs. actual claim cost by risk decile" />
+                <figcaption class="image-caption">Lift chart — model risk-ranking performance</figcaption>
+              </figure>
+    
+            </div>
+            <div class="project-sta">
+              <div class="project-section">
+                <h4><i class="fa-solid fa-circle-question"></i> Situation</h4>
+                <p>Insurance companies must price policies according to individual risk rather than a single flat company-wide rate — underpricing high-risk policies erodes underwriting profit, while overpricing low-risk policies drives customer attrition.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-bullseye"></i> Task</h4>
+                <p>Build an explainable, industry-standard risk-based pricing framework that estimates each policy's expected claim cost (pure premium) from driver, vehicle, and regional risk factors, and validate whether it can meaningfully rank policies by risk.</p>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-list-check"></i> Action</h4>
+                <ul>
+                  <li>Built a two-stage frequency-severity GLM pricing framework on 678,000+ real auto insurance policies (French Motor Third-Party Liability dataset).</li>
+                  <li>Modeled claim frequency with a Poisson GLM using log(Exposure) as an offset to correctly normalize for policies observed over different time periods.</li>
+                  <li>Modeled claim severity with a Gamma GLM restricted to policies with claims, weighted by claim count.</li>
+                  <li>Combined both models into a Pure Premium estimate and validated performance against a flat-rate baseline using Poisson deviance and a decile-based lift chart.</li>
+                </ul>
+              </div>
+              <div class="impact-box">
+                <h4><i class="fa-solid fa-square-poll-vertical"></i> Business Impact</h4>
+                <ul>
+                  <li>📉 Outperformed flat-rate pricing, reducing Poisson deviance by 2.9% versus a single company-wide average rate.</li>
+                  <li>🎯 Highest-risk decile showed 6.1× higher actual claim costs than the lowest-risk decile, confirming the model meaningfully ranks risk.</li>
+                  <li>📊 Identified bonus-malus claims history and vehicle age as the strongest frequency drivers (+2.3%/point and −3.9%/year, respectively).</li>
+                  <li>🔍 Found claim severity to be inherently harder to predict than frequency — informing which signals pricing teams should weight most heavily.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <h4><i class="fa-solid fa-gauge-high"></i> Key Metrics</h4>
+                <div class="metrics-grid">
+                  <div class="metric">678,013 policies analyzed</div>
+                  <div class="metric">26,639 claim records</div>
+                  <div class="metric">2.9% deviance improvement over baseline</div>
+                  <div class="metric">6.1× risk-decile separation</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-section">
+            <h4><i class="fa-solid fa-toolbox"></i> Technologies</h4>
+            <div class="tools-tags">
+              <span class="tool-tag">Python</span>
+              <span class="tool-tag">Pandas</span>
+              <span class="tool-tag">Statsmodels</span>
+              <span class="tool-tag">Scikit-learn</span>
+              <span class="tool-tag">GLM (Poisson / Gamma)</span>
+              <span class="tool-tag">Matplotlib</span>
+            </div>
+          </div>
+          <div class="why-box">
+            <strong>Why This Project Matters:</strong> This project demonstrates the frequency-severity GLM pricing methodology used across the insurance industry, translating raw risk factors into a defensible, ranked pricing structure — directly applicable to product and pricing analyst roles in insurance and financial services.
+          </div>
+        </article>
       </div>
     </section>
-
     <section id="contact">
       <h2><i class="fa-solid fa-address-book"></i> Let's Connect!</h2>
       <div class="contact-grid">
@@ -1228,18 +1244,15 @@
       </div>
     </section>
   </main>
-
   <!-- Lightbox -->
   <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;">
     <img id="lightbox-img" src="" alt="" style="max-width:92vw;max-height:92vh;border-radius:10px;box-shadow:0 8px 48px rgba(0,0,0,0.6);object-fit:contain;" />
     <button id="lightbox-close" style="position:fixed;top:1.25rem;right:1.5rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;">&#x2715;</button>
   </div>
-
   <script>
     // Lightbox
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
-
     document.querySelectorAll('.project-image-frame img').forEach(img => {
       img.addEventListener('click', () => {
         lightboxImg.src = img.src;
@@ -1248,16 +1261,13 @@
         document.body.style.overflow = 'hidden';
       });
     });
-
     function closeLightbox() {
       lightbox.style.display = 'none';
       document.body.style.overflow = '';
     }
-
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
     // Nav scroll
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', function(e) {
@@ -1269,6 +1279,21 @@
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }
+      });
+    });
+    // Category filter
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          const cats = (card.getAttribute('data-category') || '').split(' ');
+          const show = filter === 'all' || cats.includes(filter);
+          card.classList.toggle('is-hidden', !show);
+        });
       });
     });
   </script>
